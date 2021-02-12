@@ -1,0 +1,18 @@
+<div></div>
+
+<script>
+    // display page timer!
+    let time = 0;
+    const div = document.querySelector('div');
+    const id = setInterval(() => {
+        div.innerHTML = time++;
+    }, 1000);
+
+    // register distinct SSE channel for user
+    // @TODO: replace user with signed token
+    const client = new EventSource('http://localhost:1979/wallet?client=miles');
+
+    client.addEventListener('walletChange', function (event) {
+        console.log(event.data);
+    })
+</script>

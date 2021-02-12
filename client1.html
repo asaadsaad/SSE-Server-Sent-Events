@@ -1,0 +1,14 @@
+<div></div>
+
+<script>
+    let time = 0;
+    const div = document.querySelector('div');
+    const id = setInterval(() => {
+        div.innerHTML = time++;
+    }, 1000)
+    const client = new EventSource('http://localhost:1979/wallet?client=asaad');
+
+    client.addEventListener('walletChange', function (event) {
+        console.log(event.data);
+    })
+</script>
