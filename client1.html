@@ -11,4 +11,7 @@
     client.addEventListener('walletChange', function (event) {
         console.log(event.data);
     })
+    
+    // stop EventSource from auto-retry and request new IP/PORT for notification service
+    client.addEventListener('error', () => client.close())
 </script>
